@@ -8,7 +8,7 @@ CC = g++
 CC_C = gcc
 
 COMPILER_FLAGS = -finline-functions -std=c++20 -Iinclude
-LINKER_FLAGS = -lm -lpthread
+LINKER_FLAGS = -lm -lpthread -lraylib
 
 # Release:
 #CFLAGS = -O3 -fomit-frame-pointer -ffast-math -w $(COMPILER_FLAGS)
