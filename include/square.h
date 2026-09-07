@@ -1,15 +1,15 @@
 #ifndef SQUARE_H__
 #define SQUARE_H__
 
+#include "transform.h"
+
 class Square {
 public:
-  int width;
-  int height;
-  int posX;
-  int posY;
+  Transform transform;
+
 
 public:
-  Square(int width = 30, int height = 30, int posX = 30, int posY = 30);
+  Square(int posX = 30, int posY = 30);
 };
 
 #endif // SQUARE_H__
