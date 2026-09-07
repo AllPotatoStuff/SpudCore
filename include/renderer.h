@@ -5,8 +5,8 @@
 
 class Renderer {
 public:
-  void initializeWindow(int windowWidth, int windowHeight, const char *windowTitle,
-                     int targetFPS);
+  void initializeWindow(int windowWidth, int windowHeight,
+                        const char *windowTitle, int targetFPS);
 
   bool windowShouldClose();
   void closeWindow();
@@ -14,9 +14,9 @@ public:
   void beginFrame();
   void endFrame();
 
-  void drawRectangle(Vector2& position, Vector2& size);
+  void drawRectangle(Vector2 position, Vector2 size);
 
-  void drawCircle(Vector2& position, float radius);
+  void drawCircle(Vector2 position, float radius);
 };
 
 #endif // RENDERER_H__

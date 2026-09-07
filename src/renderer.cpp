@@ -19,10 +19,10 @@ void Renderer::beginFrame() {
 
 void Renderer::endFrame() { rl::EndDrawing(); }
 
-void Renderer::drawRectangle(Vector2 &position, Vector2 &size) {
+void Renderer::drawRectangle(Vector2 position, Vector2 size) {
   rl::DrawRectangle(position.x, position.y, size.x, size.y, rl::MAROON);
 }
 
-void Renderer::drawCircle(Vector2 &position, float radius) {
+void Renderer::drawCircle(Vector2 position, float radius) {
   rl::DrawCircle(position.x, position.y, radius, rl::MAROON);
 }
