@@ -3,6 +3,7 @@
 
 #include "input.h"
 #include "timer.h"
+#include "renderer.h"
 
 // Temporary for debug and test use
 #include "square.h"
@@ -11,6 +12,8 @@ class Engine {
 private:
   Timer m_timer;
   Input m_input;
+  Renderer m_renderer;
+
 
   int m_width;
   int m_height;
