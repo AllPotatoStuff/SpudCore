@@ -42,3 +42,9 @@ void Renderer::drawSprite(Transform transform, Sprite sprite) {
 void Renderer::drawCircle(Vector2 position, float radius) {
   rl::DrawCircle(position.x, position.y, radius, rl::MAROON);
 }
+
+void Renderer::end2DMode() { rl::EndMode2D(); }
+
+void Renderer::begin2DMode(GameCamera camera, Vector2 screenCenter) {
+  rl::BeginMode2D(camera.to_raylib(screenCenter));
+}

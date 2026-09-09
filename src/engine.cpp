@@ -20,11 +20,15 @@ void Engine::update(float dt) {
   if (m_input.isKeyDown(Keys::S))
     velocity.value.y += speed;
 
+  auto &player_transform = m_scene.getComponent<Transform>(m_player);
+  m_camera.position = player_transform.position;
+
   m_movementSystem.update(m_scene, dt);
 }
 
 void Engine::render() {
   m_renderer.beginFrame();
+  m_renderer.begin2DMode(m_camera, m_screenCenter);
 
   for (EntityId id : m_scene.entities()) {
     if (m_scene.hasComponent<Transform>(id) &&
@@ -33,12 +37,14 @@ void Engine::render() {
                             m_scene.getComponent<Sprite>(id));
     }
   }
-
+  
+  m_renderer.end2DMode();
   m_renderer.endFrame();
 }
 
 Engine::Engine(int width, int height, const char *title, int fps)
-    : m_height(height), m_width(width) {
+    : m_height(height), m_width(width),
+      m_screenCenter(width / 2.0, height / 2.0) {
   m_renderer.initializeWindow(width, height, title, fps);
 
   Entity player = m_scene.createEntity();
