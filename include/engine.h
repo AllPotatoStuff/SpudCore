@@ -4,12 +4,20 @@
 #include "input.h"
 #include "timer.h"
 #include "renderer.h"
+#include "scene.h"
+#include "assetmanager.h"
+#include "movementsystem.h"
 
 class Engine {
 private:
   Timer m_timer;
   Input m_input;
   Renderer m_renderer;
+  Scene m_scene;
+  AssetManager m_assets;
+  MovementSystem m_movementSystem;
+
+  EntityId m_player = INVALID_ENTITY;
 
   int m_width;
   int m_height;

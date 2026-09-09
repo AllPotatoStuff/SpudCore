@@ -7,7 +7,7 @@
 #include "transform.h"
 
 void test_engine() {
-  Engine engine(550, 200, "Only window!", 60);
+  Engine engine(1000, 800, "Player ONLY!", 60);
 
   engine.run();
 }
@@ -57,6 +57,6 @@ void test_scene() {
 }
 
 int main() {
-  test_scene();
+  test_engine();
   return 0;
 }

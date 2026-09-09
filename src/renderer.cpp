@@ -25,23 +25,18 @@ void Renderer::drawRectangle(Transform transform) {
 }
 
 void Renderer::drawSprite(Transform transform, Sprite sprite) {
-  rl::DrawTexturePro(
-      sprite.texture.get()->handle(),
-      (rl::Rectangle){
-          0,
-          0,
-          (float)sprite.texture.get()->width(),
-          (float)sprite.texture.get()->height(),
-      },
-      (rl::Rectangle){
-          transform.position.x,
-          transform.position.y,
-          (float)sprite.texture.get()->width(),
-          (float)sprite.texture.get()->height(),
-      },
-      (rl::Vector2){sprite.texture.get()->width() * transform.scale.x,
-                    sprite.texture.get()->height() * transform.scale.y},
-      transform.rotation, sprite.tint);
+  float texWidth = (float)sprite.texture->width();
+  float texHeight = (float)sprite.texture->height();
+
+  float destWidth = texWidth * transform.scale.x;
+  float destHeight = texHeight * transform.scale.y;
+
+  rl::DrawTexturePro(sprite.texture->handle(),
+                     (rl::Rectangle){0, 0, texWidth, texHeight},
+                     (rl::Rectangle){transform.position.x, transform.position.y,
+                                     destWidth, destHeight},
+                     (rl::Vector2){destWidth * 0.5f, destHeight * 0.5f},
+                     transform.rotation, sprite.tint);
 }
 
 void Renderer::drawCircle(Vector2 position, float radius) {
