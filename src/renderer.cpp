@@ -19,10 +19,32 @@ void Renderer::beginFrame() {
 
 void Renderer::endFrame() { rl::EndDrawing(); }
 
-void Renderer::drawRectangle(Vector2 position, Vector2 size) {
-  rl::DrawRectangle(position.x, position.y, size.x, size.y, rl::MAROON);
+void Renderer::drawRectangle(Transform transform) {
+  rl::DrawRectangle(transform.position.x, transform.position.y,
+                    transform.scale.x, transform.scale.y, rl::MAROON);
+}
+
+void Renderer::drawSprite(Transform transform, Sprite sprite) {
+  float texWidth = (float)sprite.texture->width();
+  float texHeight = (float)sprite.texture->height();
+
+  float destWidth = texWidth * transform.scale.x;
+  float destHeight = texHeight * transform.scale.y;
+
+  rl::DrawTexturePro(sprite.texture->handle(),
+                     (rl::Rectangle){0, 0, texWidth, texHeight},
+                     (rl::Rectangle){transform.position.x, transform.position.y,
+                                     destWidth, destHeight},
+                     (rl::Vector2){destWidth * 0.5f, destHeight * 0.5f},
+                     transform.rotation, sprite.tint);
 }
 
 void Renderer::drawCircle(Vector2 position, float radius) {
   rl::DrawCircle(position.x, position.y, radius, rl::MAROON);
+}
+
+void Renderer::end2DMode() { rl::EndMode2D(); }
+
+void Renderer::begin2DMode(GameCamera camera, Vector2 screenCenter) {
+  rl::BeginMode2D(camera.to_raylib(screenCenter));
 }
